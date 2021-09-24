@@ -33,5 +33,4 @@ public class QuestionController {
         questionService.deleteQuestion(id);
     }
 
-
 }

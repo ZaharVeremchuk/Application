@@ -8,11 +8,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class QuestionMapper extends AbstractConverter<QuestionsDTO, Question> {
 
-
     @Override
     protected Question convert(QuestionsDTO questionsDTO) {
         return Question.builder()
                 .description(questionsDTO.getDescription())
+                .id(questionsDTO.getId())
                 .build();
     }
 }

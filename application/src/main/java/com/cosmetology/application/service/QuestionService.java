@@ -1,10 +1,11 @@
 package com.cosmetology.application.service;
 
-import com.cosmetology.application.constant.ApplicationConstant;
 import com.cosmetology.application.dto.response.QuestionsDTO;
+import com.cosmetology.application.exception.constant.ExceptionConstant;
+import com.cosmetology.application.exception.exceptions.QuestionBadRequest;
+import com.cosmetology.application.exception.exceptions.QuestionNotFound;
 import com.cosmetology.application.model.question.Question;
 import com.cosmetology.application.repository.QuestionRepository;
-import javassist.NotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
@@ -20,8 +21,9 @@ public class QuestionService {
     private ModelMapper modelMapper;
 
 
-    public QuestionService(QuestionRepository questionRepository) {
+    public QuestionService(QuestionRepository questionRepository, ModelMapper modelMapper) {
         this.questionRepository = questionRepository;
+        this.modelMapper = modelMapper;
     }
 
     public List<QuestionsDTO> allQuestions(){
@@ -38,21 +40,17 @@ public class QuestionService {
     }
 
     public QuestionsDTO saveQuestion(QuestionsDTO questionsDTO){
+        if (questionsDTO.getId() != null){
+            throw new QuestionBadRequest(ExceptionConstant.QUESTION_BAD_REQUEST);
+        }
         Question question = modelMapper.map(questionsDTO,Question.class);
         Question response = questionRepository.save(question);
         questionsDTO = modelMapper.map(response,QuestionsDTO.class);
         return questionsDTO;
     }
 
-    public void deleteQuestion(Long id)  {
-        Question question = questionRepository.findById(id).orElse(null);
-        if (question == null){
-            try {
-                throw new NotFoundException(ApplicationConstant.QUESTION_NOT_FOUND);
-            } catch (NotFoundException e) {
-                e.printStackTrace();
-            }
-        }
+    public void deleteQuestion(Long id){
+        Question question = questionRepository.findById(id).orElseThrow(() -> new QuestionNotFound(ExceptionConstant.QUESTION_NOT_FOUND+ id));
         questionRepository.delete(question);
     }
 
