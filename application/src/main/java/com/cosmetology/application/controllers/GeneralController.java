@@ -1,10 +1,7 @@
 package com.cosmetology.application.controllers;
 
-
-import com.cosmetology.application.dto.request.GeneralDTO;
-import com.cosmetology.application.model.question.Question;
+import com.cosmetology.application.dto.request.GeneralDTO;;
 import com.cosmetology.application.service.GeneralService;
-import com.cosmetology.application.service.QuestionService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,7 +21,7 @@ public class GeneralController {
         this.generalService = generalService;
     }
 
-    @PostMapping("sendAnswers")
+    @PostMapping("/sendAnswers")
     public ResponseEntity<?> sendAnswers(@Valid @RequestBody GeneralDTO dto){
         generalService.saveClientInformation(dto);
         return ResponseEntity.ok().body(HttpStatus.CREATED);
