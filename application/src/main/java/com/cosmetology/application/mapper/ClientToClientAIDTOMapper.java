@@ -15,13 +15,6 @@ public class ClientToClientAIDTOMapper extends AbstractConverter<Client, ClientA
                 .fullName(client.getFullName())
                 .birthday(client.getBirthday())
                 .workplace(client.getWorkplace())
-                .homeСare(client.getHomeСare())
-                .chronicDiseases(client.getChronicDiseases())
-                .healingWounds(client.getHealingWounds())
-                .allergicReactions(client.getAllergicReactions())
-                .alcoholSmoking(client.getAlcoholSmoking())
-                .whatUseBefore(client.getWhatUseBefore())
-                .spf(client.getSpf())
                 .build();
     }
 }

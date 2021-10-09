@@ -13,14 +13,7 @@ public class ClientMapper extends AbstractConverter<ClientDTO, Client> {
         return Client.builder()
                 .fullName(clientDTO.getFullName())
                 .birthday(clientDTO.getBirthday())
-                .alcoholSmoking(clientDTO.getAlcoholSmoking())
-                .allergicReactions(clientDTO.getAllergicReactions())
-                .chronicDiseases(clientDTO.getChronicDiseases())
-                .healingWounds(clientDTO.getHealingWounds())
-                .homeСare(clientDTO.getHomeСare())
                 .workplace(clientDTO.getWorkplace())
-                .whatUseBefore(clientDTO.getWhatUseBefore())
-                .spf(clientDTO.getSpf())
                 .build();
     }
 }

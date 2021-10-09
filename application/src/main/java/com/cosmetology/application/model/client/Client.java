@@ -2,6 +2,7 @@ package com.cosmetology.application.model.client;
 
 import com.cosmetology.application.model.aswers.Answer;
 import com.cosmetology.application.model.complaint.Complaint;
+import com.cosmetology.application.model.visits.Visit;
 import lombok.*;
 
 import javax.persistence.*;
@@ -12,7 +13,7 @@ import java.util.List;
 import java.util.Set;
 
 @Data
-@EqualsAndHashCode(exclude = {"answers","complaintList"})
+@EqualsAndHashCode(exclude = {"answers","complaintList","visits"})
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -33,30 +34,13 @@ public class Client {
     @Size(max = 255)
     private String workplace;
 
-    @Column(name = "home_care")
-    private String homeСare;
-
-    @Column(name = "chronic_diseases")
-    private String chronicDiseases;
-
-    @Column(name = "healing_wounds")
-    private String healingWounds;
-
-    @Column(name = "allergic_reactions")
-    private String allergicReactions;
-
-    @Column(name = "alcohol_smoking")
-    private String alcoholSmoking;
-
-    @Column(name = "what_use_before")
-    private String whatUseBefore;
-
-    private String spf;
-
     @OneToMany(mappedBy = "client",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private Set<Answer> answers;
 
     @OneToMany(mappedBy = "client",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private List<Complaint> complaintList;
+
+    @OneToMany(mappedBy = "client",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    private List<Visit> visits;
 
 }

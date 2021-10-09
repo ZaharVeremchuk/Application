@@ -14,12 +14,6 @@ public class ClientResponseMapper extends AbstractConverter<Client, ClientDTO> {
                 .fullName(client.getFullName())
                 .birthday(client.getBirthday())
                 .workplace(client.getWorkplace())
-                .homeСare(client.getHomeСare())
-                .chronicDiseases(client.getChronicDiseases())
-                .healingWounds(client.getHealingWounds())
-                .alcoholSmoking(client.getAlcoholSmoking())
-                .whatUseBefore(client.getWhatUseBefore())
-                .spf(client.getSpf())
                 .build();
     }
 }

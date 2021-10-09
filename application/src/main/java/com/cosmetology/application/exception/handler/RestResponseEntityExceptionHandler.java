@@ -1,9 +1,6 @@
 package com.cosmetology.application.exception.handler;
 
-import com.cosmetology.application.exception.exceptions.ClientBadRequest;
-import com.cosmetology.application.exception.exceptions.ClientNotFound;
-import com.cosmetology.application.exception.exceptions.QuestionBadRequest;
-import com.cosmetology.application.exception.exceptions.QuestionNotFound;
+import com.cosmetology.application.exception.exceptions.*;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpHeaders;

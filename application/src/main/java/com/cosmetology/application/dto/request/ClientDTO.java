@@ -25,18 +25,4 @@ public class ClientDTO {
     @Size(max = 255)
     private String workplace;
 
-    private String homeСare;
-
-    private String chronicDiseases;
-
-    private String healingWounds;
-
-    private String allergicReactions;
-
-    private String alcoholSmoking;
-
-    private String whatUseBefore;
-
-    private String spf;
-
 }
