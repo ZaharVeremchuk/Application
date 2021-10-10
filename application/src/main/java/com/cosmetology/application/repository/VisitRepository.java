@@ -9,6 +9,6 @@ import java.util.List;
 @Repository
 public interface VisitRepository extends JpaRepository<Visit,Long> {
 
-    List<Visit> findVisitByClient_Id(Long client_id);
+    List<Visit> findVisitByClientId(Long clientId);
 
 }

@@ -12,6 +12,7 @@ import java.util.List;
 @Builder
 @Data
 @EqualsAndHashCode(exclude = "answers")
+@ToString(exclude = "answers")
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity

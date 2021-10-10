@@ -4,12 +4,14 @@ import com.cosmetology.application.model.client.Client;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 
 @Data
 @EqualsAndHashCode(exclude = "client")
+@ToString(exclude = {"client"})
 @NoArgsConstructor
 @Entity
 @Table(name = "complaints")

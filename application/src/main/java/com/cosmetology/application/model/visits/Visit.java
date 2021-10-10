@@ -1,16 +1,16 @@
 package com.cosmetology.application.model.visits;
 
 import com.cosmetology.application.model.client.Client;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Builder
 @Data
+@EqualsAndHashCode(exclude = "client")
+@ToString(exclude = "client")
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -22,6 +22,7 @@ public class Visit {
     private Long id;
 
     @ManyToOne
+    @JsonIgnore
     private Client client;
 
     private String procedure;

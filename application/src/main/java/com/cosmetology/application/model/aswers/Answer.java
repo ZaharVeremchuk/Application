@@ -3,15 +3,13 @@ package com.cosmetology.application.model.aswers;
 import com.cosmetology.application.model.client.Client;
 import com.cosmetology.application.model.question.Question;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Data
 @EqualsAndHashCode(exclude = {"question","client"})
+@ToString(exclude = {"question","client"})
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity

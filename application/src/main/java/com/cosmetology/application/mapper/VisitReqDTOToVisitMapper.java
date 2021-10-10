@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class VisitReqDTOToVisitMapper extends AbstractConverter<VisitRequestDTO, Visit> {
 
-
     @Override
     protected Visit convert(VisitRequestDTO visitRequestDTO) {
         return Visit.builder()

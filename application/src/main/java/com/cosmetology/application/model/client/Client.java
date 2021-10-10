@@ -14,6 +14,7 @@ import java.util.Set;
 
 @Data
 @EqualsAndHashCode(exclude = {"answers","complaintList","visits"})
+@ToString(exclude = {"answers","complaintList","visits"})
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder

@@ -56,16 +56,8 @@ public class ClientService {
         return clientDTOList;
     }
 
-    public List<ClientAIDTO> getAllInfoAboutClient() {
-        List<ClientAIDTO> clientDTOS = clientRepository.getAllInfoAboutClient().stream().map(
-                client -> {
-                    ClientAIDTO clientAIDTO = modelMapper.map(client, ClientAIDTO.class);
-                    clientAIDTO.setAnswersList(questionRepository.getQuestionAndAnswersByClient(client.getId()));
-                    clientAIDTO.setComplaints(complaintRepository.findComplaintByClient(client.getId()));
-                    return clientAIDTO;
-                }
-        ).collect(Collectors.toList());
-        return clientDTOS;
+    public List<Client> getAllInfoAboutClient() {
+        return clientRepository.findAll();
     }
 
 }

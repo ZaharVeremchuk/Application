@@ -1,12 +1,17 @@
 package com.cosmetology.application.dto.response;
 
-import com.cosmetology.application.model.client.Client;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 
+@Getter
+@Setter
+@Builder
 public class VisitDTO {
 
-    private Client client;
+    private Long visitId;
 
     private String procedure;
 

@@ -1,13 +1,15 @@
 package com.cosmetology.application.controllers;
 
 import com.cosmetology.application.dto.request.VisitRequestDTO;
+import com.cosmetology.application.dto.response.VisitDTO;
 import com.cosmetology.application.service.VisitService;
 import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PostAuthorize;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import java.util.List;
 
 
 @RestController
@@ -21,12 +23,12 @@ public class VisitController {
     }
 
     @GetMapping("/{clientId}")
-    public ResponseEntity<?> getAllVisitForClient(@Param("clientId") Long clientId) {
+    public ResponseEntity<List<VisitDTO>> getAllVisitForClient(@RequestParam("clientId") Long clientId) {
         return ResponseEntity.status(HttpStatus.OK).body(visitService.searchVisitsByClientId(clientId));
     }
 
     @PostMapping("/save")
-    public ResponseEntity<?> save(@RequestBody VisitRequestDTO visitRequestDTO){
+    public ResponseEntity<?> save(@Valid @RequestBody VisitRequestDTO visitRequestDTO){
         return ResponseEntity.status(HttpStatus.CREATED).body(visitService.save(visitRequestDTO));
     }
 
@@ -35,8 +37,8 @@ public class VisitController {
         return ResponseEntity.status(HttpStatus.OK).body(visitService.save(visitRequestDTO));
     }
 
-    @DeleteMapping("/delete?id={id}")
-    public ResponseEntity<?> delete(@Param("id") Long id){
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<?> delete(@RequestParam("id") Long id){
         return ResponseEntity.status(HttpStatus.OK).body(visitService.delete(id));
     }
 

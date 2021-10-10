@@ -25,6 +25,7 @@ public class VisitService {
 
     public VisitService(VisitRepository visitRepository, ClientRepository clientRepository, ModelMapper modelMapper) {
         this.visitRepository = visitRepository;
+        this.clientRepository = clientRepository;
         this.modelMapper = modelMapper;
     }
 
@@ -32,19 +33,18 @@ public class VisitService {
         if (clientId == null) {
             throw new ClientNotFound(ExceptionConstant.CLIENT_NOT_FOUND + clientId);
         }
-        List<VisitDTO> visitDTOList = visitRepository.findVisitByClient_Id(clientId)
+        List<VisitDTO> visitDTOList = visitRepository.findVisitByClientId(clientId)
                 .stream()
                 .map(v -> modelMapper.map(v, VisitDTO.class))
                 .collect(Collectors.toList());
         return visitDTOList;
     }
 
-    public ResponseEntity<?> save(VisitRequestDTO visitRequestDTO) {
+    public Visit save(VisitRequestDTO visitRequestDTO) {
         Client client = clientRepository.findById(visitRequestDTO.getId_client()).orElseThrow(() -> new ClientNotFound(ExceptionConstant.CLIENT_NOT_FOUND + visitRequestDTO.getId_client()));
         Visit visit = modelMapper.map(visitRequestDTO, Visit.class);
         visit.setClient(client);
-        visitRepository.save(visit);
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+       return visitRepository.save(visit);
     }
 
     public ResponseEntity<?> delete(Long id) {
