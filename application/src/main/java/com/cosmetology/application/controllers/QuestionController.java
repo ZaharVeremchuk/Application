@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
+@CrossOrigin(origins = {"http://localhost:8080","http://localhost:3000"})
 @RestController
 @RequestMapping("/questions")
 public class QuestionController {
