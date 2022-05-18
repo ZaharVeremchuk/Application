@@ -1,6 +1,6 @@
 package com.cosmetology.application.model.role;
 
-import com.cosmetology.application.model.enums.AccessRole;
+import com.cosmetology.application.model.mapper.enums.AccessRole;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

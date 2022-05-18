@@ -1,4 +1,4 @@
-package com.cosmetology.application.mapper;
+package com.cosmetology.application.model.mapper;
 
 import com.cosmetology.application.dto.request.VisitRequestDTO;
 import com.cosmetology.application.model.visits.Visit;

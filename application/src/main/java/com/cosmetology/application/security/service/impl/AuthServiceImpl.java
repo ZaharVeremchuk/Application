@@ -5,7 +5,7 @@ import com.cosmetology.application.dto.request.LoginDTO;
 import com.cosmetology.application.dto.request.SignUpDto;
 import com.cosmetology.application.dto.response.JwtResponse;
 import com.cosmetology.application.dto.response.MessageResponseDTO;
-import com.cosmetology.application.model.enums.AccessRole;
+import com.cosmetology.application.model.mapper.enums.AccessRole;
 import com.cosmetology.application.model.role.Role;
 import com.cosmetology.application.model.user.User;
 import com.cosmetology.application.repository.RoleRepository;
@@ -95,33 +95,31 @@ public class AuthServiceImpl implements AuthService {
 
         if (strRoles == null) {
 
-            Role userRole = roleRepository.findByName(AccessRole.ROLE_USER)
+            Role userRole = roleRepository.findByName(AccessRole.USER)
                     .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
             roles.add(userRole);
         } else {
             strRoles.forEach(role -> {
                 switch (role) {
                     case "admin":
-                        Role adminRole = roleRepository.findByName(AccessRole.ROLE_ADMIN)
+                        Role adminRole = roleRepository.findByName(AccessRole.ADMIN)
                                 .orElseThrow(() -> new RuntimeException(ApplicationConstant.ROLE_NOT_FOUND));
                         roles.add(adminRole);
 
                         break;
                     case "mod":
-                        Role modRole = roleRepository.findByName(AccessRole.ROLE_MODERATOR)
+                        Role modRole = roleRepository.findByName(AccessRole.MODERATOR)
                                 .orElseThrow(() -> new RuntimeException(ApplicationConstant.ROLE_NOT_FOUND));
                         roles.add(modRole);
 
                         break;
                     default:
-                        Role userRole = roleRepository.findByName(AccessRole.ROLE_USER)
+                        Role userRole = roleRepository.findByName(AccessRole.USER)
                                 .orElseThrow(() -> new RuntimeException(ApplicationConstant.ROLE_NOT_FOUND));
                         roles.add(userRole);
                 }
             });
         }
-
-
 
         user.setRoles(roles);
         userRepository.save(user);

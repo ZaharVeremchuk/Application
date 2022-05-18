@@ -1,6 +1,6 @@
 package com.cosmetology.application.repository;
 
-import com.cosmetology.application.model.enums.AccessRole;
+import com.cosmetology.application.model.mapper.enums.AccessRole;
 import com.cosmetology.application.model.role.Role;
 
 import org.springframework.data.jpa.repository.JpaRepository;
